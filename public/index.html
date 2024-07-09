@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depoimentos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .depoimento {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .depoimento img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Depoimentos</h1>
+    <div id="depoimentos"></div>
+
+    <script>
+        async function fetchDepoimentos() {
+            try {
+                const response = await fetch('/depoimentos');
+                const depoimentos = await response.json();
+
+                const container = document.getElementById('depoimentos');
+                depoimentos.forEach(depoimento => {
+                    const div = document.createElement('div');
+                    div.className = 'depoimento';
+                    div.innerHTML = `
+                        <h2>${depoimento.nome}</h2>
+                        <p>${depoimento.mensagem}</p>
+                        <img src="data:${depoimento.contentType};base64,${depoimento.imagem}" alt="Imagem de ${depoimento.nome}">
+                    `;
+                    container.appendChild(div);
+                });
+            } catch (error) {
+                console.error('Erro ao buscar depoimentos:', error);
+            }
+        }
+
+        window.onload = fetchDepoimentos;
+    </script>
+</body>
+</html>
