@@ -21,3 +21,7 @@ app.use('/depoimentos-home', routerDepoimentoRandom)
 app.listen(port, () => {
     console.log(`Servidor escutando na porta ${port}`)
 })
+
+export {
+    app
+}

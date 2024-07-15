@@ -34,11 +34,12 @@ async function getAllDepoiment() {
 async function getDepoimento(id) {
     try {
         const result = await clientesDepoimentos.findOne({ _id: new ObjectId(id)})
+        const { data, ...resultWithoutData } = result;
 
         if(!result) {
             throw new Error('Não foi encontrado depoimento')
         } else {
-            return result
+            return resultWithoutData
         }
         
     } catch (erro) {
@@ -72,7 +73,7 @@ async function atualizaDepoimento (id, newData) {
             throw new Error('Depoimento não encontrado');
         }
 
-        return result
+        return {message: "Atualização realizada", result}
     } catch (erro) {
         throw erro
     }
@@ -86,7 +87,7 @@ async function deletaDepoimento (id) {
             throw new Error('Depoimento não encontrado');
         }
 
-        return result;
+        return {message: "Depimento deletado", result};
     } catch (erro) {
         throw erro;
     }
