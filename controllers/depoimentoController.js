@@ -1,5 +1,4 @@
 import { atualizaDepoimento, deletaDepoimento, getAllDepoiment, getDepoimento, getRandom, postNewDepoimento } from "../services/depoimentoService.js"
-import fs from 'fs'
 
 async function postDepoimentos(req,res) {
     if(!req.file) {

@@ -12,7 +12,7 @@ async function postNewDepoimento(novoDepoimento) {
         if(result) {
             return result
         } else {
-            throw new Error("Não foi possivel criano novo depoimento")
+            throw new Error("Não foi possivel criar novo depoimento")
         }
     } catch (erro) {
         throw erro

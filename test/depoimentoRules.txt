@@ -1,0 +1,4 @@
+1. Deve possuir Nome;
+2. Deve possuir o preco;
+3. Preço deve ser um número;
+
